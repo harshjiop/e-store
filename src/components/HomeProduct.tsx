@@ -25,6 +25,7 @@ export default function HomePooduct() {
               <div className="">
                 <ProductCard />
                 <CardContent >
+                  <h1>product</h1>
                 </CardContent>
               </div>
             </div>

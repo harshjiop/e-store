@@ -47,13 +47,13 @@ export default function Account() {
         <span className=" cursor-pointer">Account</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 mt-5">
-        {!session && (
+        {session.status!=='authenticated' && (
           <>
             <DropdownMenuLabel>Create your Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
           </>
         )}
-        {session && (
+        {session.status==='authenticated' && (
           <>
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
@@ -63,8 +63,8 @@ export default function Account() {
         <DropdownMenuGroup>
           <DropdownMenuItem>
             <User className="mr-2 h-4 w-4" />
-            {!session && <Link href="/login">Login</Link>}
-            {session && <Link href="/acount">Profile</Link>}
+            {session.status!=='authenticated' && <Link href="/login">Login</Link>}
+            {session.status==='authenticated' && <Link href="/acount">Profile</Link>}
           </DropdownMenuItem>
           <DropdownMenuItem>
             <ShoppingCart className="mr-2 h-4 w-4" />
@@ -72,7 +72,7 @@ export default function Account() {
             {/* <span>My Cart</span> */}
 
           </DropdownMenuItem>
-          {session && adimin && (
+          {session.status==='authenticated' && adimin && (
             <>
               <DropdownMenuItem>
                 <CirclePlus className="mr-2 h-4 w-4" /><span>Add Product</span>
@@ -85,7 +85,7 @@ export default function Account() {
           </DropdownMenuItem>
           <DropdownMenuItem>
 
-            {!session &&
+            {session.status!=='authenticated' &&
               <><UserPlus className="mr-2 h-4 w-4" /><Link href={"/register"}>Create An Account</Link></>}
           </DropdownMenuItem>
         </DropdownMenuGroup>
@@ -159,7 +159,7 @@ export default function Account() {
         <DropdownMenuSeparator />
 
         
-          {session && (
+          {session.status==='authenticated' && (
             <DropdownMenuItem>
               <LogOut className="mr-2 h-4 w-4" />
             <button onClick={()=>signOut()}>Log out</button>

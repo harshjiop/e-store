@@ -10,7 +10,7 @@ export default function Home() {
         <Feature />
       
       <div className="items-center">
-        {/* <HomePooduct/> */}
+        <HomePooduct/>
       </div>
       
           </>

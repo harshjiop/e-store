@@ -9,46 +9,47 @@ import {
     TableRow,
   } from "@/components/ui/table"
 import { ScrollArea } from "@radix-ui/react-scroll-area"
+import { Trash2 } from "lucide-react"
   
   const invoices = [
     {
-      invoice: "INV001",
+      name: "Phone",
       paymentStatus: "Paid",
       totalAmount: "$250.00",
       paymentMethod: "Credit Card",
     },
     {
-      invoice: "INV002",
+      name: "Laptop",
       paymentStatus: "Pending",
       totalAmount: "$150.00",
       paymentMethod: "PayPal",
     },
     {
-      invoice: "INV003",
+      name: "Computer",
       paymentStatus: "Unpaid",
       totalAmount: "$350.00",
       paymentMethod: "Bank Transfer",
     },
     {
-      invoice: "INV004",
+      name: "I pnone 15",
       paymentStatus: "Paid",
       totalAmount: "$450.00",
       paymentMethod: "Credit Card",
     },
     {
-      invoice: "INV005",
+      name: "Fan",
       paymentStatus: "Paid",
       totalAmount: "$550.00",
       paymentMethod: "PayPal",
     },
     {
-      invoice: "INV006",
+      name: "INV006",
       paymentStatus: "Pending",
       totalAmount: "$200.00",
       paymentMethod: "Bank Transfer",
     },
     {
-      invoice: "INV007",
+      name: "INV007",
       paymentStatus: "Unpaid",
       totalAmount: "$300.00",
       paymentMethod: "Credit Card",
@@ -58,33 +59,34 @@ import { ScrollArea } from "@radix-ui/react-scroll-area"
   export default function CartItems() {
     return (
       <Table>
-        <ScrollArea className=" rounded-md border">
-        <TableCaption>A list of your recent invoices.</TableCaption>
+        
+        <TableCaption>A list of your recent names.</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Invoice</TableHead>
+            <TableHead className="w-[100px]">Name</TableHead>
             <TableHead>Status</TableHead>
-            <TableHead>Method</TableHead>
+            {/* <TableHead>Method</TableHead> */}
             <TableHead className="text-right">Amount</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {invoices.map((invoice) => (
-            <TableRow key={invoice.invoice}>
-              <TableCell className="font-medium">{invoice.invoice}</TableCell>
-              <TableCell>{invoice.paymentStatus}</TableCell>
-              <TableCell>{invoice.paymentMethod}</TableCell>
-              <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+          {invoices.map((name) => (
+            <TableRow key={name.name}>
+              <TableCell className="font-medium">{name.name}</TableCell>
+              <TableCell>{name.paymentStatus}</TableCell>
+              
+              <TableCell className="text-justify">{name.totalAmount}</TableCell>
+              <TableCell><Trash2 size={15} /></TableCell>
             </TableRow>
           ))}
         </TableBody>
         <TableFooter>
-          <TableRow>
-            <TableCell colSpan={3}>Total</TableCell>
-            <TableCell className="text-right">$2,500.00</TableCell>
+          <TableRow className="">
+            <TableCell colSpan={2}>Total</TableCell>
+            <TableCell className="">$2,500.00</TableCell>
           </TableRow>
         </TableFooter>
-        </ScrollArea>
+      
       </Table>
     )
   }
