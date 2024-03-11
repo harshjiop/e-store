@@ -1,5 +1,5 @@
 import {
-    CirclePlus,
+  CirclePlus,
   Cloud,
   Copy,
   CreditCard,
@@ -39,8 +39,8 @@ import Link from "next/link";
 import MyCart from "./MyCart";
 
 export default function Account() {
-  const session = false;
-  const adimin=true;
+  const session = true;
+  const adimin = true;
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -68,32 +68,32 @@ export default function Account() {
           </DropdownMenuItem>
           <DropdownMenuItem>
             <ShoppingCart className="mr-2 h-4 w-4" />
-            <MyCart/>
+            <MyCart />
             {/* <span>My Cart</span> */}
-            
+
           </DropdownMenuItem>
-          {session&&adimin&&(
-                <>
-                <DropdownMenuItem>
+          {session && adimin && (
+            <>
+              <DropdownMenuItem>
                 <CirclePlus className="mr-2 h-4 w-4" /><span>Add Product</span>
-                </DropdownMenuItem>
-                </>
-            )}
+              </DropdownMenuItem>
+            </>
+          )}
           <DropdownMenuItem>
             <Store className="mr-2 h-4 w-4" />
             <span>Abote Store</span>
           </DropdownMenuItem>
           <DropdownMenuItem>
-          
-            {!session && 
-            <><UserPlus className="mr-2 h-4 w-4" /><Link href={"/register"}>Create An Account</Link></>}
+
+            {!session &&
+              <><UserPlus className="mr-2 h-4 w-4" /><Link href={"/register"}>Create An Account</Link></>}
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>
-            <ShoppingBasket className="mr-2 h-4 w-4" />
+              <ShoppingBasket className="mr-2 h-4 w-4" />
               <span>Catogery</span>
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
