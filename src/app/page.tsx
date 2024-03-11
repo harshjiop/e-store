@@ -6,9 +6,9 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <div className="">
+      
         <Feature />
-      </div>
+      
       <div className="items-center">
         {/* <HomePooduct/> */}
       </div>

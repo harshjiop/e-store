@@ -69,7 +69,7 @@ export default function Account() {
           <DropdownMenuItem>
             <ShoppingCart className="mr-2 h-4 w-4" />
             <MyCart/>
-            <span>My Cart</span>
+            {/* <span>My Cart</span> */}
             
           </DropdownMenuItem>
           {session&&adimin&&(
