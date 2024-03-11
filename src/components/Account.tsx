@@ -37,9 +37,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import MyCart from "./MyCart";
-
+import { signOut, useSession } from "next-auth/react";
 export default function Account() {
-  const session = true;
+  const session = useSession()
   const adimin = true;
   return (
     <DropdownMenu>
@@ -158,14 +158,15 @@ export default function Account() {
         </DropdownMenuItem>
         <DropdownMenuSeparator />
 
-        <DropdownMenuItem>
+        
           {session && (
-            <>
+            <DropdownMenuItem>
               <LogOut className="mr-2 h-4 w-4" />
-              <span>Log out</span>
-            </>
+            <button onClick={()=>signOut()}>Log out</button>
+            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+          </DropdownMenuItem>
           )}
-        </DropdownMenuItem>
+        
       </DropdownMenuContent>
     </DropdownMenu>
   );

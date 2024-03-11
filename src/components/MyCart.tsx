@@ -15,7 +15,8 @@ import {
 } from "@/components/ui/sheet"
 import { useState } from "react"
 import CartItems from "./CartItems"
-
+import { ScrollArea } from "@/components/ui/scroll-area"
+// import { Separator } from "@/components/ui/separator"
 const SHEET_SIDES = ["right",] as const
 
 type SheetSide = (typeof SHEET_SIDES)[number]
@@ -27,7 +28,7 @@ export default function MyCart() {
       {SHEET_SIDES.map((side) => (
         <Sheet key={side}>
           <SheetTrigger asChild>
-            <span className=" cursor-pointer text-center">Cart {product}</span>
+            <span className=" cursor-pointer text-center">Cart ({product})</span>
           </SheetTrigger>
           <SheetContent>
             <SheetHeader>
@@ -36,7 +37,11 @@ export default function MyCart() {
                 Make changes to your profile here. Click save when you're done.
               </SheetDescription>
             </SheetHeader>
-            <CartItems/>
+            <ScrollArea className="h-70 w-48 rounded-md border">
+              <CartItems/>
+            </ScrollArea>
+
+            
             <SheetFooter>
               <SheetClose asChild>
                 <Button type="submit">Save changes</Button>

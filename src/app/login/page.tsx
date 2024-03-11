@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/utils/cn";
@@ -9,11 +9,16 @@ import {
   IconBrandOnlyfans,
 } from "@tabler/icons-react";
 import Link from "next/link";
+import {signIn} from "next-auth/react";
+
+  
 
 export default function Login() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Form submitted");
+  const [email,setEmail]=useState('')
+  const [password,setPassword]=useState('')
+  const handleSubmit = async () => {
+    // console.log(email,password)
+    await signIn('credentials',{email,password,callbackUrl:'/'})
   };
   return (
     <div className=" mt-32 max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
@@ -26,25 +31,26 @@ export default function Login() {
         href={"/register"}>Create A new Account </Link> if you don't have any account.
       </p>
 
-      <form className="my-8" onSubmit={handleSubmit}>
-        <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
-          <LabelInputContainer>
-            <Label htmlFor="firstname">User name</Label>
-            <Input id="firstname" placeholder="Tyler" type="text" />
-          </LabelInputContainer>
-          
-        </div>
+      <div className="my-8">
+      
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
-          <Input id="email" placeholder="projectmayhem@fc.com" type="email" />
+          <Input 
+          name="email"
+          onChange={(e)=>setEmail(e.target.value)}
+          id="email" placeholder="projectmayhem@fc.com" type="email" />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="password">Password</Label>
-          <Input id="password" placeholder="••••••••" type="password" />
+          <Input 
+          name="password"
+          onChange={(e)=>setPassword(e.target.value)}
+          id="password" placeholder="••••••••" type="password" />
         </LabelInputContainer>
        
 
         <button
+        onClick={handleSubmit}
           className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
           type="submit"
         >
@@ -57,6 +63,7 @@ export default function Login() {
         <div className="flex flex-col space-y-4">
           
           <button
+          onClick={()=>signIn('google',{callbackUrl:'/'})}
             className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
             type="submit"
           >
@@ -68,7 +75,7 @@ export default function Login() {
           </button>
           
         </div>
-      </form>
+      </div>
     </div>
   );
 }

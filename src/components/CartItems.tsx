@@ -8,6 +8,7 @@ import {
     TableHeader,
     TableRow,
   } from "@/components/ui/table"
+import { ScrollArea } from "@radix-ui/react-scroll-area"
   
   const invoices = [
     {
@@ -57,6 +58,7 @@ import {
   export default function CartItems() {
     return (
       <Table>
+        <ScrollArea className=" rounded-md border">
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
           <TableRow>
@@ -82,6 +84,7 @@ import {
             <TableCell className="text-right">$2,500.00</TableCell>
           </TableRow>
         </TableFooter>
+        </ScrollArea>
       </Table>
     )
   }
