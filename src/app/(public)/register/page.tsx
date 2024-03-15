@@ -12,7 +12,6 @@ import Link from "next/link";
 
 export default function Register() {
   const [name, setName] = useState("");
-  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = async () => {
@@ -21,6 +20,8 @@ export default function Register() {
       body: JSON.stringify({ name, email, password }),
       headers: { "Content-Type": "application/json" },
     });
+    
+  
   };
 
   return (
@@ -36,18 +37,7 @@ export default function Register() {
       </p>
 
       <div className="my-8">
-        <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
-          <LabelInputContainer>
-            <Label htmlFor="firstname">User Name</Label>
-            <Input
-              value={username}
-              onChange={(e) => setUserName(e.target.value)}
-              id="firstname"
-              placeholder="Tyler"
-              type="text"
-            />
-          </LabelInputContainer>
-        </div>
+        
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
           <Input
