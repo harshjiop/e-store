@@ -7,7 +7,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Switch } from "@headlessui/react";
 import Image from "next/image";
 import {UploadImage} from '@/lib/Upload'
-
+import axios from 'axios'
 export default function Example() {
   const [image,setImage]=useState<File[]>([])
   const [user,setUser]=useState({
@@ -44,6 +44,8 @@ export default function Example() {
         const urls = (await response).map(item => item.url);
         const public_id = (await response).map(item => item.public_id);
         setUser({...user,Image:urls})
+        const productresponse =await axios.post("/api/v1/users/product",user);
+        console.log(productresponse)
         // console.log(urls)
         // console.log(public_id)
       } catch (error) {
