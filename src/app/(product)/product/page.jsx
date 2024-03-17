@@ -1,10 +1,11 @@
 import ProductCard from "@/components/ProductCard";
 import Card from "@/components/ProductCard";
 import data from '@/Data/Bookdataa'
+import { cn } from "@/lib/utils";
 export default function Product(){
     return(
       <>
-      <div className="grid grid-cols-1  md:grid-cols-2  lg:grid-cols-4 ml-2 py-10">
+      <div className='mx-auto grid w-full max-w-7xl items-center space-y-4 px-2 py-10 md:grid-cols-2 md:gap-6 md:space-y-0 lg:grid-cols-4'>
   
         <ProductCard/>
         <ProductCard/>

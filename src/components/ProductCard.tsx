@@ -57,13 +57,15 @@ export default function ProductCard({}) {
   return (
     <div className=" rounded-none max-w-72 shadow-input bg-white dark:bg-black items-center">
       <Carousel className="mt-0 w-full  max-w-full">
-        <CarouselContent>
+        <CarouselContent className="">
           {Array.from({ length: images.length }).map((_, index) => (
             <CarouselItem key={index}>
-              <div className="p-1">
+              <div className="p-1 rounded-md border">
                 <Card>
-                  <CardContent className="flex aspect-square items-center justify-center p-2">
-                    <Image src={images[index]} alt="avtar" width={228} height={228}/>
+                  <CardContent className="flex aspect-square items-center justify-center p-2 ">
+                    <Image 
+                    className="aspect-[16/9] w-full rounded-md md:aspect-auto md:h-[300px] lg:h-[200px]"
+                    src={images[index]} alt="avtar" width={100} height={100}/>
                   
                   </CardContent>
                 </Card>
